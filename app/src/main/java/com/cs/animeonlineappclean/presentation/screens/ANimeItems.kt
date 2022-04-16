@@ -1,16 +1,17 @@
 package com.cs.animeonlineappclean.presentation.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.cs.animeonlineappclean.domain.model.AnimeData
 
 @Composable
@@ -19,21 +20,63 @@ fun AnimeItems(
     modifier: Modifier = Modifier,
 
     ) {
-    Column(
-        modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-       Text(text = "${anime.title}",
-       style = MaterialTheme.typography.h6,
-       overflow = TextOverflow.Ellipsis,
-       color = Color.DarkGray)
 
-        Text(text = "${anime.description}",
-            style = MaterialTheme.typography.h6,
-            overflow = TextOverflow.Ellipsis,
-            color = Color.DarkGray)
+    Card(
+        modifier = Modifier.padding(16.dp),
+        backgroundColor = Color.LightGray
+    ) {
+        Column(
+            modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp),
+                text = "${anime.title}",
+                overflow = TextOverflow.Ellipsis,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+            Text(
+                modifier = Modifier.padding(2.dp),
+                text = "Episode Count:${anime.episode_count}",
+                overflow = TextOverflow.Ellipsis,
+                fontSize = 14.sp,
+                color = Color.Black
+            )
+                Text(
+                    modifier = Modifier.padding(2.dp),
+                    text = "Start Date:${anime.start_date}",
+                    overflow = TextOverflow.Ellipsis,
+                    fontSize = 14.sp,
+                    color = Color.Blue
+                )
+                Text(
+                    modifier = Modifier.padding(2.dp),
+                    text = "End Date:${anime.end_date}",
+                    overflow = TextOverflow.Ellipsis,
+                    fontSize = 14.sp,
+                    color = Color.Red
+                )
+            Text(
+                modifier = Modifier.padding(2.dp),
+                text = "Trailer Link: \n ${anime.trailer_url}",
+                overflow = TextOverflow.Ellipsis,
+                fontSize = 14.sp,
+                color = Color.Blue.copy(alpha = 0.6f),
+            )
+            Text(
+                modifier = Modifier.padding(top = 8.dp),
+                text = " Description: \n ${anime.description}",
+                overflow = TextOverflow.Ellipsis,
+                fontSize = 14.sp,
+
+                color = Color.DarkGray
+            )
+        }
+
     }
 
 
